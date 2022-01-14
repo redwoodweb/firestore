@@ -32,6 +32,7 @@ export default {
 </script>
 
 <style lang="scss">
+* { margin: 0; padding: 0; }
 ul,li { list-style: none; }
 body { background: red; }
 body {
