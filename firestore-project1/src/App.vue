@@ -22,7 +22,7 @@ export default {
   },
   mounted() {
     db.collection("user").get().then((querySnapshot) => {
-        querySnapshot.forEach((doc,i) => {            
+        querySnapshot.forEach((doc,i) => {
             console.log(doc.id, " => ", doc.data());
             this.user.push(doc.data().name)
         });
@@ -32,6 +32,7 @@ export default {
 </script>
 
 <style lang="scss">
+/*css 초기화 테스트*/
 * { margin: 0; padding: 0; }
 ul,li { list-style: none; }
 body { background: red; }
