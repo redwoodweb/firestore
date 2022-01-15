@@ -12,7 +12,6 @@
 
 <script>
 import {db} from './main.js'
-
 export default {
   name: 'App',
   data() {
@@ -30,24 +29,8 @@ export default {
   }
 }
 </script>
-
 <style lang="scss">
-/*css 초기화 테스트*/
-* { margin: 0; padding: 0; }/
-/*scss test*/
-ul,li { list-style: none; }
-body { background: red; }
-body {
-  #app{
-    background: yellow;
-  }
-}
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@charset "UTF-8";
+@import "./assets/scss/common";
+@import "./assets/scss/initial";
 </style>
