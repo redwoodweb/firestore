@@ -33,7 +33,8 @@ export default {
 
 <style lang="scss">
 /*css 초기화 테스트*/
-* { margin: 0; padding: 0; }
+* { margin: 0; padding: 0; }/
+/*scss test*/
 ul,li { list-style: none; }
 body { background: red; }
 body {
