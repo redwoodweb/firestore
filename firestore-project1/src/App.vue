@@ -1,31 +1,21 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <ul id="example-1">
-      <li v-for="item in user">
-        {{ item }}
-      </li>
-    </ul>
-    <router-view/>
+    <Navbar/>
+    <div class="container">
+      <router-view/>
+    </div>
+    <Footer/>
   </div>
 </template>
 
 <script>
-import {db} from './main.js'
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 export default {
   name: 'App',
-  data() {
-    return{
-      user: []
-    }
-  },
-  mounted() {
-    db.collection("user").get().then((querySnapshot) => {
-        querySnapshot.forEach((doc,i) => {
-            console.log(doc.id, " => ", doc.data());
-            this.user.push(doc.data().name)
-        });
-    });
+  components: {
+    Navbar,
+    Footer
   }
 }
 </script>
