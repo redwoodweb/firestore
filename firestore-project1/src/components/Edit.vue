@@ -28,7 +28,7 @@
   </div>
 </template>
 <script>
-import {db} from '../main.js'
+import {db} from './firebaseset'
 export default {
   name: 'edit',
   data () {
