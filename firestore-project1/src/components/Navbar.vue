@@ -1,32 +1,54 @@
 <template>
   <nav>
     <div id="nav" class="nav-wrapper green">
-      <ul class="row">
-        <li v-for="(menu,i) in gnb " v-bind:key="`${menu.name}-${i}`" v-bind:class="`col s2`">
+      <div class="container">
+        <router-link to="/" class="brand-logo">rihnoboard</router-link>
+        <ul class="right">
+          <li><router-link to="/">Dashboard</router-link></li>
+          <li><router-link to="/login">Login</router-link></li>
+          <li><router-link to="/register">Resiter</router-link></li>
+          <li v-on:click="logout">Logout</li>
+        </ul>
+      </div>
+      <!-- <ul class="row">
+        <li v-for="(menu,i) in gnb " v-bind:key="`${menu.name}-${i}`" v-bind:class="'col s2'">
           <router-link v-bind:to="{ name: menu.name }" class="white-text">{{menu.name}}</router-link>
         </li>
-      </ul>
+      </ul> -->
     </div>
   </nav>
 </template>
 
 <script>
+import firebase from 'firebase'
 export default {
   name: 'navbar',
   data () {
     return {
-      user: [],
-      gnb: [
-        { name: 'dashboard' },
-        { name: 'new' },
-        { name: 'edit' },
-        { name: 'add' },
-        { name: 'employeeview' }
-      ]
+      isLoggedIn: false,
+      currenUser: false
+    }
+  },
+  methods: {
+    logout: function () {
+      console.log('logout')
+      firebase.auth().signOut().then(() => {
+        console.log('logout')
+        this.$router.push('login')
+      })
     }
   }
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
+  .nav-wrapper{
+    ul{
+      li{
+        a{
+          display: inline-block;
+        }
+      }
+    }
+  }
 </style>

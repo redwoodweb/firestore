@@ -9,15 +9,15 @@
               <form>
                 <div class="input-field">
                   <i class="material-icons prefix">email</i>
-                  <input type="text" id="email" name="" value="">
+                  <input type="email" id="email" name="" value="" v-model="email">
                   <label class="white-text" for="email">Email</label>
                 </div>
                 <div class="input-field">
                   <i class="material-icons prefix">lock</i>
-                  <input type="password" id="password" name="" value="">
+                  <input type="password" id="password" name="" value="" v-model="password">
                   <label class="white-text" for="password">Password</label>
                 </div>
-                <button class="btn btn-large grey lighten-4 black-text">Login</button>
+                <button v-on:click="login" class="btn btn-large grey lighten-4 black-text">Login</button>
               </form>
             </div>
           </div>
@@ -28,10 +28,34 @@
 </template>
 
 <script>
+import firebase from 'firebase'
 export default {
-  name: 'login',
+  name: 'register',
   data () {
+    return {
+      email: '',
+      password: ''
+    }
+  },
+  methods: {
+    login: function (e) {
+      console.log(this.email)
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(this.email.trim(), this.password)
+        .then(
+          user => {
+            alert(`You logined in as ${this.email}`)
+            // console.log(this.user)
+            this.$router.push('/')
+          },
+          err => {
+            alert(err.message)
+          }
+        )
 
+      e.preventDefault()
+    }
   }
 }
 </script>
