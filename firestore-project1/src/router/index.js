@@ -91,6 +91,7 @@ router.beforeEach((to, from, next) => {
     }
   } else if (to.matched.some(record => record.meta.requiresGuest)) {
     //  check if not logged in
+    console.log()
     if (firebase.auth().currentUser) {
       //  go to login
       next({

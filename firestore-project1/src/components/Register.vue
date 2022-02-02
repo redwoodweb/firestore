@@ -29,12 +29,18 @@
 
 <script>
 import firebase from 'firebase'
+import {db} from './firebaseset'
 export default {
   name: 'login',
   data () {
     return {
       email: '',
-      password: ''
+      password: '',
+      user: {
+        ep_id: null,
+        name: null,
+        age: null,
+      }
     }
   },
   methods: {
@@ -44,6 +50,8 @@ export default {
         .then(user => {
           alert(`Acount created for ${this.email}`)
           this.$router.push('/')
+          this.user.ep_id = this.email.trim()
+          // db.collection('user').add(this.user) /*가입 후 해당 아이디 관련 데이터 생성 */
         },
         err => {
           alert(err.message)

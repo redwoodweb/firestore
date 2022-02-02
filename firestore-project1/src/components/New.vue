@@ -25,9 +25,6 @@
         <router-link v-bind:to="{ name: 'dashboard'}" class="btn grey">취소</router-link>
       </form>
     </div>
-    {{user.ep_id}}
-    {{user.name}}
-    {{user.age}}
   </div>
 </template>
 <script>
@@ -52,7 +49,8 @@ export default {
         .then(() => {
           console.log('Document successfully updated!')
           alert(`${this.user.name}님이 등록 되었습니다.`)
-          this.$router.push('/')
+          // this.$router.push('/')
+          this.$router.go({ path: this.$router.path })
         })
         .catch((error) => {
           // The document probably doesn't exist.
