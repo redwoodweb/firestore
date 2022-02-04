@@ -30,7 +30,7 @@ export default {
     }
   },
   created () {
-    console.log(firebase.auth().currentUser)    
+    console.log(firebase.auth().currentUser)
     if (firebase.auth().currentUser) {
       this.isLoggedIn = true
       console.log(this.isLoggedIn)

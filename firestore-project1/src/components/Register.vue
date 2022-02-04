@@ -39,7 +39,7 @@ export default {
       user: {
         ep_id: null,
         name: null,
-        age: null,
+        age: null
       }
     }
   },

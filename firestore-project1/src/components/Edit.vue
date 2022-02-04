@@ -1,5 +1,6 @@
 <template>
   <div class="edit contents">
+    <div v-if="loading">loading</div>
     <h2>Edit</h2>
     <div class="row">
       <form v-on:submit.prevent="updateEmployee" class="col s12">
@@ -33,6 +34,7 @@ export default {
   name: 'edit',
   data () {
     return {
+      loading: false,
       user: {
         ep_id: null,
         name: null,
@@ -55,22 +57,7 @@ export default {
       })
     // console.log(to.params.employee_id)
   },
-  watch: {
-    '$route': 'fetchData'
-  },
   methods: {
-    fetchData () {
-      db.collection('user').where('ep_id', '==', this.$route.params.employee_id).get()
-        .then(querySnapshop => {
-          querySnapshop.forEach(doc => {
-            this.user.ep_id = doc.data().ep_id
-            this.user.name = doc.data().name
-            this.user.age = doc.data().age
-            console.log(doc.data().ep_id)
-            console.log('method:view')
-          })
-        })
-    },
     updateEmployee () {
       db.collection('user').where('ep_id', '==', this.$route.params.employee_id).get()
         .then(querySnapshop => {
